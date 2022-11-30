@@ -4,10 +4,9 @@ def uppercase(str):
 
         if i == (len(str) - 1):
             print("{:c}".format(ord(str[i]) - (ord('a') - ord('A'))
-              if ord(str[i]) >= ord('a') and ord(str[i]) <= ord('z')
-              else ord(str[i])))
+                  if ord(str[i]) >= ord('a') and ord(str[i]) <= ord('z')
+                  else ord(str[i])))
         else:
             print("{:c}".format(ord(str[i]) - (ord('a') - ord('A'))
-              if ord(str[i]) >= ord('a') and ord(str[i]) <= ord('z')
-              else ord(str[i])), end="")
-
+                  if ord(str[i]) >= ord('a') and ord(str[i]) <= ord('z')
+                  else ord(str[i])), end="")
