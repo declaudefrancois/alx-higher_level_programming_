@@ -11,6 +11,7 @@ def add(a, b):
     """
     return (a + b)
 
+
 def sub(a, b):
     """Substracts the second integer from the first.
 
@@ -22,6 +23,7 @@ def sub(a, b):
         The sesult of a - b
     """
     return (a - b)
+
 
 def mul(a, b):
     """Multiply two integers.
@@ -35,6 +37,7 @@ def mul(a, b):
     """
     return (a * b)
 
+
 def div(a, b):
     """Substracts the second integer from the first.
 
@@ -46,4 +49,3 @@ def div(a, b):
         The sesult of a / b
     """
     return (a - b)
-

@@ -15,7 +15,7 @@ if __name__ == "__main__":
         if i >= len(a):
             return (0)
 
-        return (int(a[i]) if i == len(argv) else 
+        return (int(a[i]) if i == len(argv) else
                 int(a[i]) + add_recursive(a, i + 1))
 
     print("{:d}".format(add_recursive(argv, 1)))
