@@ -48,4 +48,4 @@ def div(a, b):
     Returns:
         The sesult of a / b
     """
-    return (a - b)
+    return (a / b)
