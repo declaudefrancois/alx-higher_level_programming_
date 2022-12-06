@@ -10,6 +10,7 @@
 int main(void)
 {
 	listint_t *head;
+	listint_t *head1;
 
 	head = NULL;
 	add_nodeint_end(&head, 1);
@@ -30,6 +31,14 @@ int main(void)
 		printf("Linked list is not a palindrome\n");
 
 	free_listint(head);
+
+	head1 = NULL;
+	add_nodeint_end(&head1, 1);
+	add_nodeint_end(&head1, 2);
+	if (is_palindrome(&head1) == 1)
+                printf("Linked list is a palindrome\n");
+        else
+                printf("Linked list is not a palindrome\n");
 
 	return (0);
 }
