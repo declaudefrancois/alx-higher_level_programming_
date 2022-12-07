@@ -10,7 +10,8 @@
 void print_python_list_info(PyObject *p)
 {
 	PyListObject *plo;
-	int i, size;
+	int i;
+	ssize_t size;
 
 	plo = (PyListObject *)p;
 	size = plo->ob_base.ob_size;
