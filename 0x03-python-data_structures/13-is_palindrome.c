@@ -9,7 +9,7 @@
 int is_palindrome(listint_t **head)
 {
 	int *arr = malloc(sizeof(int *));
-	int i = 0, size;
+	int i = 0, size, j;
 	listint_t *h = *head;
 
 	if (arr == NULL)
@@ -23,7 +23,7 @@ int is_palindrome(listint_t **head)
 
 	size = i;
 	--i;
-	for (int j = 0; j < size; j++)
+	for (j = 0; j < size; j++)
 	{
 		if (arr[j] != arr[i--])
 		{
