@@ -20,3 +20,12 @@ l.append(4)
 lib.print_python_list_info(l)
 l.pop()
 lib.print_python_list_info(l)
+
+l = ["hello", "World"]
+lib.print_python_list_info(l)
+
+l = l = [1, 2, 3, 4] + l.append(5) + l.append(6)
+lib.print_python_list_info(l)
+
+l = [1, 2, 3, 4] + l.append(5) + l.append(6) + l.pop()
+lib.print_python_list_info(l)
