@@ -1,4 +1,3 @@
-guillaume@ubuntu:~/0x04$ cat 102-main.py
 #!/usr/bin/python3
 complex_delete = __import__('102-complex_delete').complex_delete
 print_sorted_dictionary = \
