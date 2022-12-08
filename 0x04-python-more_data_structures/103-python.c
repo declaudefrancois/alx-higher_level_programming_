@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "Python.h"
-
+#include <string.h>
 /**
  * print_python_list - prints basic info about
  * a python list.
@@ -33,5 +33,21 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	(void)p;
+	PyBytesObject *pbo;
+	ssize_t size;
+	int str_len;
+	
+	pbo = (PyBytesObject *)p;	
+	size = pbo->ob_base.ob_size;
+	str_len = strlen(pbo->ob_sval);
+
+	printf("[.] bytes object info\n");
+	if (str_len == 0)
+		printf("  [ERROR] Invalid Bytes Object\n");
+	else
+	{		
+		printf("  size: %ld\n", size);
+		printf("  trying string: %s\n", pbo->ob_sval);
+	}
+
 }
