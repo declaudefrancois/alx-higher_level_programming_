@@ -35,19 +35,29 @@ void print_python_bytes(PyObject *p)
 {
 	PyBytesObject *pbo;
 	ssize_t size;
-	int str_len;
-	
-	pbo = (PyBytesObject *)p;	
-	size = pbo->ob_base.ob_size;
-	str_len = strlen(pbo->ob_sval);
+	int max_bytes;
 
+	pbo = (PyBytesObject *)p;
 	printf("[.] bytes object info\n");
-	if (str_len == 0)
+
+	if (!PyBytes_Check(pbo))
+	{
 		printf("  [ERROR] Invalid Bytes Object\n");
-	else
-	{		
-		printf("  size: %ld\n", size);
-		printf("  trying string: %s\n", pbo->ob_sval);
+		return;
 	}
 
+	size = pbo->ob_base.ob_size;
+	max_bytes = size >= 10 ? 10 : size + 1;
+
+	printf("  size: %ld\n", size);
+	printf("  trying string: %s\n", pbo->ob_sval);
+	printf("  first %d bytes:", max_bytes);
+	for (int i = 0; i < max_bytes; i++)
+	{
+		if (pbo->ob_sval[i] < 0)
+			printf(" %02x", pbo->ob_sval[i] + 256);
+		else
+			printf(" %02x", pbo->ob_sval[i]);
+	}
+	printf("\n");
 }
