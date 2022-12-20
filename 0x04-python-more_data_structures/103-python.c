@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "Python.h"
 #include <string.h>
+
+void print_python_bytes(PyObject *p);
+
 /**
  * print_python_list - prints basic info about
  * a python list.
@@ -21,8 +24,14 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %ld\n", plo->allocated);
 
 	for (i = 0; i < size; i++)
+	{
 		printf("Element %d: %s\n", i, plo->ob_item[i]->ob_type->tp_name);
-	
+
+		if (strcmp(plo->ob_item[i]->ob_type->tp_name, "bytes") == 0)
+		{
+			print_python_bytes(plo->ob_item[i]);
+		}
+	}
 }
 
 /**
