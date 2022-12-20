@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 def square_matrix_simple(matrix=[]):
     mx = []
-    for i, mx1 in enumerate(matrix):
-        mx[i] = []
-        for j, item in enumerate(matrix[i]):
-            mx[i][j] = item ** 2
+    for mx1 in matrix:
+        mx.append([n ** 2 for n in mx1])
     return (mx)
