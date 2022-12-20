@@ -54,10 +54,7 @@ void print_python_bytes(PyObject *p)
 	printf("  first %d bytes:", max_bytes);
 	for (int i = 0; i < max_bytes; i++)
 	{
-		if (pbo->ob_sval[i] < 0)
-			printf(" %02x", pbo->ob_sval[i] + 256);
-		else
-			printf(" %02x", pbo->ob_sval[i]);
+		printf(" %02x", pbo->ob_sval[i] & 0xff);
 	}
 	printf("\n");
 }
