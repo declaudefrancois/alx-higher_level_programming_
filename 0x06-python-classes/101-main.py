@@ -14,3 +14,6 @@ print(my_square)
 
 my_square = Square(4, (4, 4))
 print(my_square)
+
+my_square = Square(0, (10, 10))
+print(my_square)

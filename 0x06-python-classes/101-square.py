@@ -28,7 +28,7 @@ class Square:
         """Magic method for converting a square into a string."""
         x, y = self.__position
         str = ""
-        if y != 0:
+        if y != 0 and self.__size != 0:
             for i in range(y):
                 str += "\n"
 
