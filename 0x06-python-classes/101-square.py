@@ -42,9 +42,6 @@ class Square:
             if i < self.__size - 1:
                 str += "\n"
 
-        if self.__size == 0:
-            str += "\n"
-
         return (str)
 
     def __check_position_value(self, position):
