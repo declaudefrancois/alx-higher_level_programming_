@@ -34,7 +34,7 @@ class Square:
 
         for i in range(self.__size):
             if x != 0:
-                for i in range(x):
+                for k in range(x):
                     str += " "
 
             for j in range(self.__size):

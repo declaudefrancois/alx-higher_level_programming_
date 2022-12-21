@@ -8,3 +8,9 @@ print("--")
 
 my_square = Square(5, (4, 1))
 print(my_square)
+
+my_square = Square(4, (4, 0))
+print(my_square)
+
+my_square = Square(4, (4, 4))
+print(my_square)
