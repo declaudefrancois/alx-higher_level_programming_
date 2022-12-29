@@ -1,0 +1,39 @@
+Module for testing `add_integer` function.
+==========================================
+
+
+Correct result
+--------------
+Test for correct results given correct inputs.
+
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(14, 20)
+34
+
+>>> add_integer(-14, 10)
+-4
+
+>>> add_integer(-2, -3)
+-5
+
+>>> add_integer(0, 0)
+0
+
+>>> add_integer(485963217478952215, 45548781488785477859)
+46034744706264430074
+
+
+should raise error if a or b is not an int or float
+---------------------------------------------------
+>>> add_integer('14', 45)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(14, [45])
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer('14', '45')
+Traceback (most recent call last):
+TypeError: a must be an integer
+
