@@ -16,6 +16,7 @@ class Rectangle:
         Attributes:
             width (int): the reactangle width.
             height (int): the reactangle height.
+            number_of_instances(int): Number of instances of the class
     """
     number_of_instances = 0
 
@@ -29,6 +30,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -127,4 +129,5 @@ class Rectangle:
         return "Rectangle({:d}, {:d})".format(self.width, self.height)
 
     def __del__(self):
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
