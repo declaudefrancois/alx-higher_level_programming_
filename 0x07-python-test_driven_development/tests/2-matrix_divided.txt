@@ -1,0 +1,58 @@
+Tests case for the function def matrix_divided(matrix, div)
+===========================================================
+
+Should give the correct result, given correct args
+--------------------------------------------------
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+>>> matrix = [
+...	[1, 2, 3],
+...	[2, 3, 4],
+...	[5, 6, 7]
+... ]
+...
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [0.67, 1.0, 1.33], [1.67, 2.0, 2.33]]
+
+
+>>> matrix = [
+...     [1, 2, -3],
+...     [2, 3, -4],
+...     [5, -6, -7]
+... ]
+...
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, -1.0], [0.67, 1.0, -1.33], [1.67, -2.0, -2.33]]
+
+
+>>> matrix = [
+...     [1, 2, -3],
+...     [2, 3, -4],
+...     [5, -6, -7]
+... ]
+...
+>>> matrix_divided(matrix, -1)
+[[-1.0, -2.0, 3.0], [-2.0, -3.0, 4.0], [-5.0, 6.0, 7.0]]
+
+Should raise exception if incorrect args given
+----------------------------------------------
+
+>>> matrix = [
+...     [1, 2, 3],
+...     [2, 3, 4],
+...     [5, 6, 7, 0]
+... ]
+...
+>>> matrix_divided(matrix, -1)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix = [
+...     [1, 2, 3],
+...     [2, 3, 4],
+...     [5, 6, 7]
+... ]
+...
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+TypeError: division by zero
