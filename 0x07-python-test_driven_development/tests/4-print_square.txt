@@ -1,0 +1,54 @@
+Tests case for the function print_square(size)
+==============================================
+
+Should give the correct output, given correct args
+--------------------------------------------------
+>>> fn = __import__('4-print_square').print_square
+
+>>> fn(4)
+####
+####
+####
+####
+
+>>> fn(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> fn(2)
+##
+##
+
+>>> fn(0)
+<BLANKLINE>
+
+Should raise exception if incorrect args given
+----------------------------------------------
+>>> fn (3.2)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> fn ([10])
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> fn (-3.2)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> fn (-3)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+
+>>> fn()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
