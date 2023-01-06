@@ -28,7 +28,6 @@ Should give the correct output, given correct args
 ##
 
 >>> fn(0)
-<BLANKLINE>
 
 Should raise exception if incorrect args given
 ----------------------------------------------
