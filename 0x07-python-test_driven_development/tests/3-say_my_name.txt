@@ -1,0 +1,34 @@
+Tests case for the function def say_my_name(first_name, last_name=""):
+===========================================================
+
+Should give the correct output, given correct args
+--------------------------------------------------
+>>> fn = __import__('3-say_my_name').say_my_name
+
+>>> fn("Fred", "Swaniker")
+My name is Fred Swaniker
+
+>>> fn("Julien", "Barbier")
+My name is Julien Barbier
+
+>>> fn("Guy François de Claude", "NKOUKA")
+My name is Guy François de Claude NKOUKA
+
+Should raise exception if incorrect args given
+----------------------------------------------
+
+>>> fn (10, "TOTO")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> fn ("Alpha", [])
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> fn ((1, 2), 456)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> fn ()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
