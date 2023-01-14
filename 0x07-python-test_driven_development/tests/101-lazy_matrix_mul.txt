@@ -6,13 +6,16 @@ Should give the correct output, given correct args
 >>> fn = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
 >>> fn ([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-[[7, 10], [15, 22]]
+array([[ 7, 10],
+       [15, 22]])
 
 >>> fn ([[1, 2]], [[3, 4], [5, 6]])
-[[13, 16]]
+array([[13, 16]])
 
 >>> fn ([[1, 2, 8], [7, 2, 5.6], [1, 1, 1]], [[3, 4, 4], [5, 6, 4], [7, 8, 9]])
-[[69.0, 80.0, 84.0], [70.19999999999999, 84.8, 86.4], [15.0, 18.0, 17.0]]
+array([[69. , 80. , 84. ],
+       [70.2, 84.8, 86.4],
+       [15. , 18. , 17. ]])
 
 Should raise exception if m_a or m_b is empty
 ----------------------------------------------
@@ -32,17 +35,17 @@ Traceback (most recent call last):
 ValueError: shapes (1,0) and (1,1) not aligned: 0 (dim 1) != 1 (dim 0)
 
 >>> fn (m_b, m_a)
-[[]]
+array([], shape=(1, 0), dtype=int64)
 
 Should raise error if m_a or m_b is not a list 
 of list of int or float
 ------------------------------------------------------
 >>> m_a = [1]
 >>> fn (m_a, m_b)
-[1]
+array([1])
 
 >>> fn (m_b, m_a)
-[1]
+array([1])
 
 >>> m_a = [[1, 3], [2, 2]]
 >>> m_b = (1,)
