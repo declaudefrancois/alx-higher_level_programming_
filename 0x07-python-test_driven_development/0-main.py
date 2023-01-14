@@ -6,6 +6,11 @@ print(add_integer(100, -2))
 print(add_integer(2))
 print(add_integer(100.3, -2))
 print(add_integer(1.4, 2))
+print(add_integer(float('inf'), 2))
+print(add_integer(-float('inf'), 2))
+print(add_integer(12, float('inf')))
+print(add_integer(float('inf'), float('inf')))
+print(add_integer(-float('inf'), float('inf')))
 
 try:
     print(add_integer(4, "School"))
