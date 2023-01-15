@@ -11,7 +11,7 @@ void print_python_string(PyObject *p)
 	PyBytesObject *pso;
 	Py_ssize_t size;
 
-	printf("[.] string object info\n");
+	printf("[.] string object info\n");	
 	if (!PyUnicode_Check(p))
 	{
 		printf("  [ERROR] Invalid String Object\n");
@@ -31,6 +31,6 @@ void print_python_string(PyObject *p)
 	else
 		printf("legacy string, ready\n");
 
-	printf("  length: %ld\n", size);
+	printf("  length: %ld\n", PyUnicode_GET_LENGTH(p));
 	printf("  value: %s\n", pso->ob_sval);
 }
