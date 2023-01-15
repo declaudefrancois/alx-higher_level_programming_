@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from numpy import matmul
 """
     Matrix multiplication with
     numpy.
 """
+from numpy import matmul
 
 
 def lazy_matrix_mul(m_a, m_b):
