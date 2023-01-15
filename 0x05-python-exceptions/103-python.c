@@ -87,5 +87,8 @@ void print_python_float(PyObject *p)
 	}
 
 	pfo = (PyFloatObject *) p;
-	printf("  value: %.2lf\n", pfo->ob_fval);
+	if ((int) pfo->ob_fval == pfo->ob_fval)
+		printf("  value: %d.0\n", (int) pfo->ob_fval);
+	else
+		printf("  value: %1.16lG\n", pfo->ob_fval);
 }
