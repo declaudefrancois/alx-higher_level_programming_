@@ -17,10 +17,10 @@ class TestBase(unittest.TestCase):
         """
         b1 = Base(99)
         self.assertEqual(b1.id, 99)
-        
+
         b2 = Base()
         self.assertIsInstance(b2.id, int)
-        
+
     def test_id_increment(self):
         """
             Ids should be incremented when attributed by the

@@ -41,7 +41,7 @@ class Rectangle(Base):
             rectangle instance.
         """
         return self.width * self.height
-    
+
     @property
     def width(self):
         """

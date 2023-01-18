@@ -53,11 +53,11 @@ class TestRectangle(unittest.TestCase):
         e = ctx.exception
         self.assertIsInstance(e, TypeError)
         self.assertEqual("{}".format(e), "height must be an integer")
- 
+
         self.assertRaisesRegex(TypeError, "x must be an integer",
                                Rectangle, 12, 12, [], 2)
         self.assertRaises(TypeError, "y must be an integer",
-                               Rectangle, 12, 12, 14, "2")
+                          Rectangle, 12, 12, 14, "2")
 
     def test_raise_value_errors(self):
         """
@@ -66,14 +66,14 @@ class TestRectangle(unittest.TestCase):
         gt_err = "{} must be > 0"
         gte_err = "{} must be >= 0"
         self.assertRaisesRegex(ValueError, "must be >= 0",
-                          Rectangle, 1, 1, -1, -4)
+                               Rectangle, 1, 1, -1, -4)
         self.assertRaisesRegex(ValueError, "must be >= 0",
-                          Rectangle, 1, 1, 1, -4)
+                               Rectangle, 1, 1, 1, -4)
 
         self.assertRaisesRegex(ValueError, "must be > 0",
-                          Rectangle, -1, 1, 1, -4)
+                               Rectangle, -1, 1, 1, -4)
         self.assertRaisesRegex(ValueError, "must be > 0",
-                          Rectangle, 1, 0, 1, 45)
+                               Rectangle, 1, 0, 1, 45)
 
     def test_required_positional_args(self):
         """
