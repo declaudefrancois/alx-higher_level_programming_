@@ -47,10 +47,8 @@ class Rectangle(Base):
             Display a Rectangle using #
             symbol as unit. (# = 1)
         """
-        for i in range(self.height):
-            for j in range(self.width):
-                print("#", end="")
-            print("")
+        print("\n".join(["#" * self.width
+                        for i in range(self.height)]))
 
     @property
     def width(self):
@@ -169,3 +167,8 @@ class Rectangle(Base):
                 name (str) : The name of the attribute.
         """
         raise ValueError("{} must be > 0".format(name))
+
+    def __str__(self):
+        fmt = "[{}] ({}) {}/{} - {}/{}"
+        return fmt.format(self.__class__.__name__, self.id, self.x,
+                          self.y, self.width, self.height)
