@@ -84,3 +84,13 @@ class TestRectangle(unittest.TestCase):
                "'width' and 'height'")
         self.assertRaises(TypeError, err,
                           Rectangle)
+
+    def test_rectangle_are(self):
+        """
+            Area calculation shoudl be correct.
+        """
+        r1 = Rectangle(4, 4)
+        self.assertEqual(r1.area(), 16)
+
+        r2 = Rectangle(23, 3)
+        self.assertEqual(r2.area(), 69)
