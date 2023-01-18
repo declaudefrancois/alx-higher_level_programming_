@@ -47,8 +47,11 @@ class Rectangle(Base):
             Display a Rectangle using #
             symbol as unit. (# = 1)
         """
-        print("\n".join(["#" * self.width
-                        for i in range(self.height)]))
+        text = "\n" * self.y
+        rows = ["#" * self.width for i in range(self.height)]
+        rows = [(" " * self.x) + s for s in rows]
+        text += "\n".join(rows)
+        print(text)
 
     @property
     def width(self):
