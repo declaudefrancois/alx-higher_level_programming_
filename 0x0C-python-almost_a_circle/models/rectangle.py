@@ -103,9 +103,9 @@ class Rectangle(Base):
                 width (int): The width value.
         """
         if type(width) is not int:
-            self.__must_be_int("width")
+            self._must_be_int("width")
         if width <= 0:
-            self.__must_be_gt_0("width")
+            self._must_be_gt_0("width")
 
         self.__width = width
 
@@ -125,9 +125,9 @@ class Rectangle(Base):
                 height (int): The height value.
         """
         if type(height) is not int:
-            self.__must_be_int("height")
+            self._must_be_int("height")
         if height <= 0:
-            self.__must_be_gt_0("height")
+            self._must_be_gt_0("height")
 
         self.__height = height
 
@@ -147,9 +147,9 @@ class Rectangle(Base):
                 x (int): The x coordinate value.
         """
         if type(x) is not int:
-            self.__must_be_int("x")
+            self._must_be_int("x")
         if x < 0:
-            self.__must_be_gte_0("x")
+            self._must_be_gte_0("x")
 
         self.__x = x
 
@@ -169,13 +169,13 @@ class Rectangle(Base):
                 y (int): The y coordinate value.
         """
         if type(y) is not int:
-            self.__must_be_int("y")
+            self._must_be_int("y")
         if y < 0:
-            self.__must_be_gte_0("y")
+            self._must_be_gte_0("y")
 
         self.__y = y
 
-    def __must_be_int(self, name):
+    def _must_be_int(self, name):
         """
             Throws a typeError formated as :
             "<name> must be an integer."
@@ -185,9 +185,9 @@ class Rectangle(Base):
         """
         raise TypeError("{} must be an integer".format(name))
 
-    def __must_be_gte_0(self, name):
+    def _must_be_gte_0(self, name):
         """
-            Throws a typeError formated as :
+            Throws a ValueError formated as :
             "<name> must be >= 0"
 
             Args:
@@ -195,9 +195,9 @@ class Rectangle(Base):
         """
         raise ValueError("{} must be >= 0".format(name))
 
-    def __must_be_gt_0(self, name):
+    def _must_be_gt_0(self, name):
         """
-            Throws a typeError formated as :
+            Throws a ValueError formated as :
             "<name> must be > 0"
 
             Args:
