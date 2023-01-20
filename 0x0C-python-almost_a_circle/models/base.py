@@ -3,7 +3,7 @@
     Contains the base class of all other
     classes in the project.
 """
-from json import dumps
+from json import dumps, loads
 
 
 class Base:
@@ -60,3 +60,16 @@ class Base:
 
         with open("{}.json".format(cls_name), 'w', encoding="utf-8") as f:
             f.write(cls.to_json_string(lo) if type(lo) is list else "")
+
+    @classmethod
+    def from_json_string(cls, json_string):
+        """
+            Returns the list of the JSON string
+            representation json_string.
+
+            Args:
+                json_string (str): string representing a list of dictionaries.
+        """
+        if json_string is None or json_string.strip() == "":
+            return []
+        return loads(json_string)
