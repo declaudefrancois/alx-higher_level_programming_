@@ -77,3 +77,18 @@ class Square(Rectangle):
 
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+    def to_dictionary(self):
+        """
+            Returns the dictionary representation
+            of a Square.
+        """
+        return super().to_dictionary()
+
+    def __iter__(self):
+        """
+            Allows to iterate attributes of a
+            square.
+        """
+        for k in ['id', 'size', 'x', 'y']:
+            yield(k, getattr(self, k))
