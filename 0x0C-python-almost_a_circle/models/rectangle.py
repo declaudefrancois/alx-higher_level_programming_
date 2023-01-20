@@ -87,6 +87,20 @@ class Rectangle(Base):
         for k, v in kwarg.items():
             setattr(self, k, v)
 
+    def to_dictionary(self):
+        """
+            Returns the dictionary representation of a Rectangle.
+        """
+        return dict(self)
+
+    def __iter__(self):
+        """
+            Allow to iterate the attributes of
+            a Rectangle.
+        """
+        for k in ["id", "width", "height", "x", "y"]:
+            yield(k, getattr(self, k))
+
     @property
     def width(self):
         """
