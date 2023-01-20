@@ -3,6 +3,7 @@
     Contains the base class of all other
     classes in the project.
 """
+from json import dumps
 
 
 class Base:
@@ -26,3 +27,16 @@ class Base:
             self.id = Base.__nb_objects
         else:
             self.id = id
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+            eturns the JSON string representation
+            of list_dictionaries.
+
+            Args:
+                list_dictionaries (list(dict)): List of dict.
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return "[]"
+        return dumps(list_dictionaries)
