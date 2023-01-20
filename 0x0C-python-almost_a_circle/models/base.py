@@ -91,3 +91,13 @@ class Base:
 
         instce.update(**dictionary)
         return instce
+
+    @classmethod
+    def load_from_file(cls):
+        """
+            Returns a list of instances
+            from a json string read in a file.
+        """
+        with open("{}.json".format(cls.__name__), 'r', encoding="utf-8") as f:
+            instces = cls.from_json_string(f.read())
+            return [cls.create(**item) for item in instces]
