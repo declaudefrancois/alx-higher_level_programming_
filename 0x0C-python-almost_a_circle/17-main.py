@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ 17-main """
 from models.rectangle import Rectangle
+from models.square import Square
 
 if __name__ == "__main__":
 
@@ -11,3 +12,5 @@ if __name__ == "__main__":
     print(r2)
     print(r1 is r2)
     print(r1 == r2)
+    print(Square.create(**{ 'size': 2, 'x': 1, 'y': 3 }))
+    print(Square.create(**{ 'size': 2, 'x': 1, 'y': 3, 'id': 89}))

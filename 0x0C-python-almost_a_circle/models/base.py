@@ -85,9 +85,9 @@ class Base:
         instce = None
         name = cls.__name__
         if name == "Rectangle":
-            instce = cls(10, 20, 4, 5, 3)
+            instce = cls(10, 20)
         else:
-            instce = cls(10, 4, 5, 5)
+            instce = cls(10)
 
         instce.update(**dictionary)
         return instce
