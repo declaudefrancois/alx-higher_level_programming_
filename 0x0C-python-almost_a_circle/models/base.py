@@ -73,3 +73,21 @@ class Base:
         if json_string is None or json_string.strip() == "":
             return []
         return loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+            Returns an instance with all attributes already set.
+
+            Args:
+                dictionary (dict): keyworded arguments.
+        """
+        instce = None
+        name = cls.__name__
+        if name == "Rectangle":
+            instce = cls(10, 20, 4, 5, 3)
+        else:
+            instce = cls(10, 4, 5, 5)
+
+        instce.update(**dictionary)
+        return instce
