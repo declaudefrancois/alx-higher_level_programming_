@@ -53,6 +53,31 @@ class Rectangle(Base):
         text += "\n".join(rows)
         print(text)
 
+    def update(self, *args):
+        """
+            Assigns an argument to each attribute.
+
+            1st argument should be the id attribute
+            2nd argument should be the width attribute
+            3rd argument should be the height attribute
+            4th argument should be the x attribute
+            5th argument should be the y attribute
+
+            Args:
+                *args list(int): "no-keyword" variable argument list.
+        """
+        for i, v in enumerate(args):
+            if i == 0:
+                self.id = v
+            elif i == 1:
+                self.width = v
+            elif i == 2:
+                self.height = v
+            elif i == 3:
+                self.x = v
+            elif i == 4:
+                self.y = v
+
     @property
     def width(self):
         """
