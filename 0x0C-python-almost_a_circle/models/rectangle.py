@@ -53,7 +53,7 @@ class Rectangle(Base):
         text += "\n".join(rows)
         print(text)
 
-    def update(self, *args):
+    def update(self, *args, **kwarg):
         """
             Assigns an argument to each attribute.
 
@@ -64,19 +64,28 @@ class Rectangle(Base):
             5th argument should be the y attribute
 
             Args:
-                *args list(int): "no-keyword" variable argument list.
+                *args (list(int)): "no-keyword" variable argument list.
+                **kwarg (dict): 'keyword' or named arguments.
         """
-        for i, v in enumerate(args):
-            if i == 0:
-                self.id = v
-            elif i == 1:
-                self.width = v
-            elif i == 2:
-                self.height = v
-            elif i == 3:
-                self.x = v
-            elif i == 4:
-                self.y = v
+        if args is not None and len(args) > 0:
+            for i, v in enumerate(args):
+                if i == 0:
+                    self.id = v
+                elif i == 1:
+                    self.width = v
+                elif i == 2:
+                    self.height = v
+                elif i == 3:
+                    self.x = v
+                elif i == 4:
+                    self.y = v
+            return
+
+        if kwarg is None:
+            return
+
+        for k, v in kwarg.items():
+            setattr(self, k, v)
 
     @property
     def width(self):
