@@ -51,3 +51,29 @@ class Square(Rectangle):
 
         self.width = size
         self.height = size
+
+    def update(self, *args, **kwargs):
+        """
+            Assigns attribute of a Square.
+
+            Args:
+                args: List of positional (no-keyword) args.
+                kwargs: Keyword arguments.
+        """
+        if args is not None and len(args) > 0:
+            for i, v in enumerate(args):
+                if i == 0:
+                    self.id = v
+                elif i == 1:
+                    self.size = v
+                elif i == 2:
+                    self.x = v
+                elif i == 3:
+                    self.y = v
+            return
+
+        if kwargs is None:
+            return
+
+        for k, v in kwargs.items():
+            setattr(self, k, v)
