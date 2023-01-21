@@ -198,3 +198,15 @@ class Base:
                 return [cls.create(**item) for item in instces]
         except FileNotFoundError as err:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+            Opens a window and draws all
+            the Rectangles and Squares.
+
+            Args:
+                list_rectangles (list(Rectangle)): list of Rectangle.
+                list_squres  (list(Square)): list of Square.
+        """
+
