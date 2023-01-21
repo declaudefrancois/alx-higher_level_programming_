@@ -64,3 +64,12 @@ class TestSqure(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as f:
              print(s1)
         self.assertRegex(f.getvalue(), r"\[Square\] \(10\) 1\/3 - 3")
+
+    def test_getter_setter(self):
+        """
+            Size should be accessible for reading and writting.
+        """
+        s1 = Square(5)
+        self.assertEqual(s1.size, 5)
+        s1.size = 45
+        self.assertEqual(s1.size, 45)
