@@ -98,6 +98,10 @@ class Base:
             Returns a list of instances
             from a json string read in a file.
         """
-        with open("{}.json".format(cls.__name__), 'r', encoding="utf-8") as f:
-            instces = cls.from_json_string(f.read())
-            return [cls.create(**item) for item in instces]
+        try:
+            with open("{}.json".format(cls.__name__), 'r',
+                      encoding="utf-8") as f:
+                instces = cls.from_json_string(f.read())
+                return [cls.create(**item) for item in instces]
+        except FileNotFoundError as err:
+            return []
