@@ -239,7 +239,6 @@ class Base:
             t.bk(rect.width)
             t.sety(t.ycor() - rect.height)
 
-        
         colors = Base._random_colors(len(list_squares))
         for i, rect in enumerate(list_squares):
             t = turtle.Turtle()

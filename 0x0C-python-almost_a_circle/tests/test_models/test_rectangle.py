@@ -4,6 +4,8 @@
 """
 import unittest
 from models.rectangle import Rectangle
+from contextlib import redirect_stdout
+import io
 
 
 class TestRectangle(unittest.TestCase):
@@ -85,7 +87,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, err,
                           Rectangle)
 
-    def test_rectangle_are(self):
+    def test_rectangle_area(self):
         """
             Area calculation shoudl be correct.
         """
@@ -94,3 +96,19 @@ class TestRectangle(unittest.TestCase):
 
         r2 = Rectangle(23, 3)
         self.assertEqual(r2.area(), 69)
+
+    def test_display(self):
+        """
+            Rectangle shoud be displayed with the character #.
+        """
+        r1 = Rectangle(4, 6)
+        with redirect_stdout(io.StringIO()) as f:
+             r1.display()
+
+        self.assertEqual(f.getvalue(), "####\n" * 6)
+
+        r1 = Rectangle(2, 2)
+        with redirect_stdout(io.StringIO()) as f:
+             r1.display()
+
+        self.assertEqual(f.getvalue(), "##\n" * 2)
