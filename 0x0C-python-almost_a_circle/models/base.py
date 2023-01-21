@@ -105,3 +105,96 @@ class Base:
                 return [cls.create(**item) for item in instces]
         except FileNotFoundError as err:
             return []
+
+    @staticmethod
+    def to_csv_string(list_dictionaries):
+        """
+            Returns the csv representation
+            of a list of dictionaries.
+
+            Args:
+                list_dictionaries (list): List of dictionaries.
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return ""
+
+        str_l = ""
+        for d in list_dictionaries:
+            str_l += ",".join(["{}".format(v)
+                               for k, v in d.items()]) + "\n"
+        return str_l
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+            Write a list of Base child instance
+            serialized in csv into a csv file.
+        """
+        lo = []
+        cls_name = cls.__name__
+        if list_objs is not None:
+            lo = [item.to_dictionary()
+                  for item in list_objs]
+            if len(list_objs) > 0:
+                cls_name = list_objs[0].__class__.__name__
+
+        with open("{}.csv".format(cls_name), 'w', encoding="utf-8") as f:
+            f.write(cls.to_csv_string(lo) if type(lo) is list else "")
+
+    @classmethod
+    def from_csv_string(cls, csv_string):
+        """
+            Returns the list of dictionaries represented by
+            the csv string csv_string.
+            Args:
+                csv_string (str): string representing a list of dictionaries.
+        """
+        if csv_string is None or csv_string.strip() == "":
+            return []
+
+        csv_rows = csv_string.strip().split("\n")
+        instces = []
+        for csv_row in csv_rows:
+            attrs = csv_row.split(",")
+            dictionary = {}
+            if len(attrs) == 5:
+                for i in range(len(attrs)):
+                    value = int(attrs[i])
+                    if i == 0:
+                        dictionary["id"] = value
+                    elif i == 1:
+                        dictionary["width"] = value
+                    elif i == 2:
+                        dictionary["height"] = value
+                    elif i == 3:
+                        dictionary["x"] = value
+                    elif i == 4:
+                        dictionary["y"] = value
+                instces.append(dictionary)
+            elif len(attrs) == 4:
+                for i in range(len(attrs)):
+                    value = int(attrs[i])
+                    if i == 0:
+                        dictionary["id"] = value
+                    elif i == 1:
+                        dictionary["size"] = value
+                    elif i == 2:
+                        dictionary["x"] = value
+                    elif i == 3:
+                        dictionary["y"] = value
+                instces.append(dictionary)
+        return instces
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+            Returns a list of instances
+            from a json string read from a csv file.
+        """
+        try:
+            with open("{}.csv".format(cls.__name__), 'r',
+                      encoding="utf-8") as f:
+                instces = cls.from_csv_string(f.read())
+                return [cls.create(**item) for item in instces]
+        except FileNotFoundError as err:
+            return []
