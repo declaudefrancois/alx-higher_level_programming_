@@ -126,3 +126,44 @@ class TestRectangle(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as f:
              r1.display()
         self.assertEqual(f.getvalue(), " ###\n" * 2)
+
+    def test_update(self):
+        """
+            Test update method positional args.
+        """
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(89)
+        self.assertEqual(r1.id, 89)
+
+        r1.update(99, 2)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.id, 99)
+
+        r1.update(89, 2, 3)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 3)
+
+        r1.update(89, 2, 3, 5, 10)
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 2)
+        self.assertEqual(r1.height, 3)
+        self.assertEqual(r1.x, 5)
+        self.assertEqual(r1.y, 10)
+
+    def test_update1(self):
+        """
+            Test update with keworded/non-keyworded args.
+        """
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(height=1)
+        self.assertEqual(r1.height, 1)
+
+        r1.update(width=1, x=2)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.x, 2)
+
+        r1.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(r1.x, 1)
+        self.assertEqual(r1.width, 4)
+        self.assertEqual(r1.height, 2)
