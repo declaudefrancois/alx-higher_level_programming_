@@ -4,6 +4,8 @@
     classes in the project.
 """
 from json import dumps, loads
+import turtle
+from random import randint
 
 
 class Base:
@@ -199,6 +201,16 @@ class Base:
         except FileNotFoundError as err:
             return []
 
+    @classmethod
+    def _random_colors(self, length):
+        """
+            Generate a random list of length colors.
+        """
+        colors = []
+        for i in range(length):
+            colors.append('#%06X' % randint(0, 0xFFFFFF))
+        return colors
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
@@ -209,4 +221,36 @@ class Base:
                 list_rectangles (list(Rectangle)): list of Rectangle.
                 list_squres  (list(Square)): list of Square.
         """
+        turtle.Screen()
+        turtle.pensize(5)
+        turtle.width(5)
+        colors = Base._random_colors(len(list_rectangles))
+        for i, rect in enumerate(list_rectangles):
+            t = turtle.Turtle()
+            t.pencolor(colors[i])
+            t.speed(1)
 
+            t.pu()
+            t.setpos(rect.x, rect.y)
+            t.pd()
+
+            t.fd(rect.width)
+            t.sety(t.ycor() + rect.height)
+            t.bk(rect.width)
+            t.sety(t.ycor() - rect.height)
+
+        
+        colors = Base._random_colors(len(list_squares))
+        for i, rect in enumerate(list_squares):
+            t = turtle.Turtle()
+            t.pencolor(colors[i])
+            t.speed(1)
+
+            t.pu()
+            t.setpos(rect.x, rect.y)
+            t.pd()
+
+            t.fd(rect.size)
+            t.sety(t.ycor() + rect.size)
+            t.bk(rect.size)
+            t.sety(t.ycor() - rect.size)
