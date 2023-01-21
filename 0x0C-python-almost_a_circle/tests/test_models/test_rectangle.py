@@ -112,3 +112,17 @@ class TestRectangle(unittest.TestCase):
              r1.display()
 
         self.assertEqual(f.getvalue(), "##\n" * 2)
+
+    def test_display1(self):
+        """
+            Rectangle shoud be displayed with the character #.
+        """
+        r1 = Rectangle(2, 3, 2, 2)
+        with redirect_stdout(io.StringIO()) as f:
+             r1.display()
+        self.assertEqual(f.getvalue(), "\n\n" + "  ##\n" * 3)
+
+        r1 = Rectangle(3, 2, 1, 0)
+        with redirect_stdout(io.StringIO()) as f:
+             r1.display()
+        self.assertEqual(f.getvalue(), " ###\n" * 2)
