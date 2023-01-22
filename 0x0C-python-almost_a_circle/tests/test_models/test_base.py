@@ -2,13 +2,13 @@
 """
     Base class tests.
 """
-import unittest
+from tests.test_models import basetestcase
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBase(unittest.TestCase):
+class TestBase(basetestcase.BaseTestCase):
     """
         Base class TestCase.
     """

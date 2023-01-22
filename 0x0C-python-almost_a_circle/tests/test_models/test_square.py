@@ -2,14 +2,14 @@
 """
     Rectangle class test.
 """
-import unittest
 from models.square import Square
+from tests.test_models import basetestcase
 from models.rectangle import Rectangle
 from contextlib import redirect_stdout
 import io
 
 
-class TestSqure(unittest.TestCase):
+class TestSqure(basetestcase.BaseTestCase):
     """
         Square Test case.
     """

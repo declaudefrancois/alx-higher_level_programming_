@@ -2,17 +2,16 @@
 """
     Rectangle class test.
 """
-import unittest
 from models.rectangle import Rectangle
+from tests.test_models import basetestcase
 from contextlib import redirect_stdout
 import io
 
 
-class TestRectangle(unittest.TestCase):
+class TestRectangle(basetestcase.BaseTestCase):
     """
         Rectangle test Case.
     """
-
     def test_should_inherit_base(self):
         """
             Instance of Rectangle should be Base
