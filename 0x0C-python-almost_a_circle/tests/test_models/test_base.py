@@ -39,4 +39,20 @@ class TestBase(unittest.TestCase):
 
         json_dict = Base.to_json_string([r1.to_dictionary()])
         self.assertEqual(Base.to_json_string(None), "[]")
-        self.assertEqual(json_dict, '[{"id": 1, "width": 10, "height": 4, "x": 8, "y": 6}]')
+        res = '[{"id": 1, "width": 10, "height": 4, "x": 8, "y": 6}]'
+        self.assertEqual(json_dict, res)
+
+    def test_save_to_file(self):
+        """
+            Should write the JSON representation of list to a file.
+        """
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+    
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 2, 2, 2)
+        l_r = [r1.to_dictionary(), r2.to_dictionary()]
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), Base.to_json_string(l_r))
