@@ -98,3 +98,45 @@ class TestBase(unittest.TestCase):
             s = Square.create(**item_dict)
             self.assertIsInstance(s, Square)
             self.assertEqual("{}".format(s),"{}".format(item))
+
+    def test_load_from_file(self):
+        """
+            Should load a list of instances from a json file.
+        """
+        out = Rectangle.load_from_file()
+        self.assertIsInstance(out, list)
+        self.assertEqual(len(out), 0)
+
+        out = Square.load_from_file()
+        self.assertIsInstance(out, list)
+        self.assertEqual(len(out), 0)
+
+        instces = [
+            Rectangle(10, 57, 52, 85, 745),
+            Rectangle(45, 27, 2, 8, 320),
+            Rectangle(10, 72, 2, 8, 2564),
+            Rectangle(34, 7, 2, 3218, 90),
+            Rectangle(15, 6, 2, 23, 8),
+        ]
+        Rectangle.save_to_file(instces)
+        out = Rectangle.load_from_file()
+        self.assertIsInstance(out, list)
+        self.assertEqual(len(out), len(instces))
+        for i,item in enumerate(out):
+            self.assertIsInstance(item, Rectangle)
+            self.assertEqual("{}".format(item), "{}".format(instces[i]))
+
+        instces = [
+            Square(10, 1257, 5122, 8125),
+            Square(10, 57, 52312, 5128),
+            Square(10, 523157, 52, 85),
+            Square(15430, 57, 52, 8),
+            Square(10, 57893, 52, 85),
+        ]
+        Square.save_to_file(instces)
+        out = Square.load_from_file()
+        self.assertIsInstance(out, list)
+        self.assertEqual(len(out), len(instces))
+        for i,item in enumerate(out):
+            self.assertIsInstance(item, Square)
+            self.assertEqual("{}".format(item), "{}".format(instces[i]))
