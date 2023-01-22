@@ -90,3 +90,12 @@ class TestSqure(unittest.TestCase):
         self.assertEqual(s1.size, 7)
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.y, 1)
+
+    def test_to_dictioanry(self):
+        """
+            Should return a dicionary with all keys.
+        """
+        s1 = Square(10, 2, 1, 1)
+        s1_dict = s1.to_dictionary()
+        self.assertIsInstance(s1_dict, dict)
+        self.assertEqual(s1_dict, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
