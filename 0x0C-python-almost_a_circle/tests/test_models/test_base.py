@@ -5,6 +5,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -70,3 +71,30 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(list_output, list)
         self.assertEqual(list_input, list_output)
         self.assertEqual(Rectangle.from_json_string(None), [])
+
+    def test_create(self):
+        """
+            Should create an instance from a dictionary.
+        """
+        items = [
+            Rectangle(3, 5, 1),
+            Rectangle(5, 6, 8),
+            Rectangle(4, 5, 6),
+            Rectangle(5, 9, 0, 12),
+        ]
+        for item in items:
+            r = Rectangle.create(**item.to_dictionary())
+            self.assertIsInstance(r, Rectangle)
+            self.assertEqual("{}".format(r),"{}".format(item))
+
+        items = [
+            Square(3, 5, 1),
+            Square(5, 6, 8),
+            Square(4, 5, 6),
+            Square(5, 9, 0, 12),
+        ]
+        for item in items:
+            item_dict = item.to_dictionary()
+            s = Square.create(**item_dict)
+            self.assertIsInstance(s, Square)
+            self.assertEqual("{}".format(s),"{}".format(item))
