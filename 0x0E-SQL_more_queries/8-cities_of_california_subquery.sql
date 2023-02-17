@@ -2,5 +2,5 @@
 SELECT c.id, c.state_id, c.name
 FROM `cities` AS c, `states` AS s
 WHERE  s.name = "California"
-AND c.state_id = s.id
+       AND c.state_id = s.id
 ORDER BY c.id ASC;
