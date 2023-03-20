@@ -16,11 +16,11 @@ if __name__ == "__main__":
     )
     cur = conn.cursor()
 
-    sql = ("SELECT * FROM states "
-           "WHERE states.name = BINARY '{}' "
-           "ORDER BY id ASC")
+    sql = ("SELECT c.id, c.name, s.name FROM cities AS c, states AS s "
+           "WHERE c.state_id = s.id "
+           "ORDER BY c.id ASC")
 
-    cur.execute(sql.format(sys.argv[4]))
+    cur.execute(sql)
     rows = cur.fetchall()
     for row in rows:
         print(row)
