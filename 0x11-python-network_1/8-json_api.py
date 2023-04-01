@@ -20,5 +20,4 @@ if __name__ == "__main__":
                 res_body['name']
             ))
     except Exception as e:
-        print(e)
         print("Not a valid JSON")
