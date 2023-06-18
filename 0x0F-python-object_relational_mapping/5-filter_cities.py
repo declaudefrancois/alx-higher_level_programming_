@@ -17,22 +17,27 @@ if __name__ == "__main__":
         user=user,
         passwd=pswd,
         db=db,
-        charset="utf8"
     )
 
     cursor = conn.cursor()
     sql = """
         SELECT cities.name
         FROM `cities`
-        INNER JOIN `states` WHERE states.name = %s"""
+        INNER JOIN `states` ON cities.state_id = states.id
+        WHERE states.name = %s
+        ORDER BY cities.id ASC"""
     cursor.execute(sql, (city,))
     rows = cursor.fetchall()
     rows_count = len(rows)
     for i in range(rows_count):
         print(
             "{}".format(rows[i][0]),
-            end=("," if i < rows_count - 1 else "\n")
+            end=(", " if i < rows_count - 1 else "\n")
         )
+
+    # Empty line
+    if rows_count == 0:
+        print("")
 
     cursor.close()
     conn.close()
