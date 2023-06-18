@@ -24,4 +24,7 @@ if __name__ == "__main__":
     session = Session()
 
     row = session.query(State).first()
-    print("{}: {}".format(row.id, row.name))
+    if row:
+        print("{}: {}".format(row.id, row.name))
+    else:
+        print("Nothing")
