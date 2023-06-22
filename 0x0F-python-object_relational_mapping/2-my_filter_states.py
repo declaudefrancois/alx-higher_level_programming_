@@ -23,7 +23,7 @@ if __name__ == "__main__":
     cursor = conn.cursor()
     sql = """
             SELECT * FROM `states`
-            WHERE name LIKE '%{}%'
+            WHERE name LIKE BINARY '{}'
             ORDER BY states.id ASC
         """
     cursor.execute(sql.format(term))
