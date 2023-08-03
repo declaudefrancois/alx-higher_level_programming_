@@ -6,8 +6,7 @@
 const request = require('request');
 
 const url = process.argv[2];
-const wedgeRessource = 'https://swapi-api.alx-tools.com/api/people/18/';
-
+const wedgeRessource = url.split('films')[0] + 'people/18/';
 request(url, (error, res, body) => {
   if (error) { return; }
 

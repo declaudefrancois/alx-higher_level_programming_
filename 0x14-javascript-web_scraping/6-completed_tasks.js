@@ -12,14 +12,22 @@ request(url, (error, res, body) => {
   }
 
   if (res && res.statusCode === 200) {
-    const todos = JSON.parse(body);
-    const completedTodos = todos.filter(todo => todo.completed).reduce((acc, current) => {
-      if (acc[current.userId] === undefined) {
-        acc[current.userId] = 0;
+    const completedTodos = new Map();
+    JSON.parse(body).forEach(todo => {
+      if (todo.completed) {
+        const current = completedTodos.get(todo.userId);
+        completedTodos.set(todo.userId, typeof current === 'number' ? current + 1 : 1);
       }
-      ++acc[current.userId];
-      return acc;
-    }, {});
-    console.log(completedTodos);
+    });
+
+    const users = Array.from(completedTodos);
+    const usersLength = users.length;
+    for (let i = 0; i < usersLength; i++) {
+      const start = i === 0 ? '{' : ' ';
+      const end = i === usersLength - 1 ? ' }' : ',';
+      console.log(`${start} '${users[i][0]}': ${users[i][1]}${end}`);
+    }
+
+    if (usersLength === 0) { console.log("{ }"); }
   }
 });
